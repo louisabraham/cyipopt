@@ -71,6 +71,38 @@ for linux/aarch64 platforms. Built wheels appear at the folder the command was e
 .. warning::
     Docker supports emulating non-native platforms to e.g. produce ARM binaries from an AMD64 host. However this can be quite slow (~1h for our case).
 
+Using in Pyodide (browser/WASM)
+================================
+
+cyipopt can run in the browser via `Pyodide <https://pyodide.org>`_, with Ipopt
+compiled to WebAssembly. Pre-built wheels are available from
+`GitHub releases <https://github.com/mechmotum/cyipopt/releases>`_.
+
+Install with micropip in a Pyodide environment:
+
+.. code-block:: python
+
+   import micropip
+   await micropip.install(
+       "https://github.com/mechmotum/cyipopt/releases/download/VERSION/cyipopt-VERSION-cp312-cp312-pyodide_2024_0_wasm32.whl"
+   )
+
+Then use it normally:
+
+.. code-block:: python
+
+   import numpy as np
+   from cyipopt import minimize_ipopt
+   from scipy.optimize import rosen, rosen_der
+
+   x0 = np.array([1.3, 0.7, 0.8, 1.9, 1.2])
+   res = minimize_ipopt(rosen, x0, jac=rosen_der)
+   print(res.x)
+
+**Full example**: see the `grecov calculator <https://louisabraham.github.io/grecov/>`_
+for a working web app that uses cyipopt in Pyodide to solve nonlinear optimization
+problems entirely in the browser.
+
 License
 =======
 
