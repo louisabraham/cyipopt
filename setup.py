@@ -50,9 +50,9 @@ KEYWORDS = [
     "nonlinear programming",
     "optimization",
 ]
-AUTHOR = "Jason K. Moore"
-EMAIL = "moorepants@gmail.com"
-URL = "https://github.com/mechmotum/cyipopt"
+AUTHOR = "Jason K. Moore, Louis Abraham"
+EMAIL = "moorepants@gmail.com, louis.abraham@yahoo.fr"
+URL = "https://github.com/louisabraham/cyipopt-wheels"
 INSTALL_REQUIRES = [
     "numpy>=1.26.4",
 ]
